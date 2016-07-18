@@ -29,7 +29,7 @@ export default class Carousel {
 
 		// state vars
 		// --------------------
-		this.current = 0;
+		this.current = isNaN(options.initialIndex) ? 0 : options.initialIndex;
 		this.slides = [];
 		this.sliding = false;
 		this.cloned = 0;
@@ -89,7 +89,7 @@ export default class Carousel {
 		if ( this.numSlides < this.options.display ) { this.sliding = true; return; }		// this.sliding deactivates carousel. I will better-ify this one day. Maybe "this.active" ?
 		if ( this.options.infinite ) { this._cloneSlides(); }
 
-		this.go(0);
+		this.go(this.current);
 
 		// set up Events
 		if (!this.options.disableDragging) {
