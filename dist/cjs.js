@@ -38,7 +38,7 @@ var Carousel = function () {
 
 		// state vars
 		// --------------------
-		this.current = 0;
+		this.current = isNaN(options.initialIndex) ? 0 : options.initialIndex;
 		this.slides = [];
 		this.sliding = false;
 		this.cloned = 0;
@@ -109,7 +109,7 @@ var Carousel = function () {
 				this._cloneSlides();
 			}
 
-			this.go(0);
+			this.go(this.current);
 
 			// set up Events
 			if (!this.options.disableDragging) {
